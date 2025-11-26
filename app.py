@@ -3,20 +3,19 @@ from pathlib import Path
 
 st.set_page_config(page_title="Vibinraj D | Portfolio", layout="wide")
 
-# ============================================
-# ADVANCED UI CSS (Glass + Depth + Motion)
-# ============================================
+# ============================================================
+# Apple-Style Minimal Luxury CSS
+# ============================================================
 st.markdown("""
 <style>
 
 :root {
-    --bg: #eef2f7;
-    --card: rgba(255,255,255,0.78);
-    --border: rgba(0,0,0,0.08);
-    --shadow: rgba(0,0,0,0.12);
-    --accent: #3066ff;
-    --font-dark: #0f0f0f;
-    --font-light: #333333;
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --border: #e5e5e5;
+    --text-dark: #111111;
+    --text-medium: #444444;
+    --accent: #0071e3;
 }
 
 /* Page background */
@@ -24,171 +23,156 @@ st.markdown("""
     background: var(--bg);
 }
 
-/* Center container */
+/* Container */
 .container {
     max-width: 900px;
     margin: auto;
-    animation: fadeIn 0.9s ease-out;
+    padding-top: 2rem;
+    animation: fadeIn 1s ease-out;
 }
 
-/* Fade-in animation */
+/* Fade animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px);}
-    to { opacity: 1; transform: translateY(0);}
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -1px;
+    margin-bottom: 0.2rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin-bottom: 2.5rem;
 }
 
 /* Section titles */
 .section-title {
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: var(--font-dark);
-    letter-spacing: -0.5px;
-    margin-top: 2.5rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 2.8rem;
     margin-bottom: 0.4rem;
-    animation: slideIn 0.55s ease-out;
-}
-
-@keyframes slideIn {
-    from { opacity:0; transform: translateX(-18px); }
-    to { opacity:1; transform: translateX(0); }
 }
 
 .section-line {
-    width: 85px;
-    height: 4px;
-    border-radius: 8px;
-    background: linear-gradient(90deg, var(--accent), #7b5dfc);
-    animation: grow 0.7s ease-out;
-}
-@keyframes grow {
-    from { width: 0px; }
-    to { width: 85px; }
+    height: 2px;
+    width: 70px;
+    background: var(--text-dark);
+    opacity: 0.15;
 }
 
-/* Premium glass-card */
+/* CARDS - Apple style */
 .card {
-    background: var(--card);
-    padding: 1.8rem 2rem;
+    background: var(--surface);
+    padding: 2rem 2.2rem;
     border-radius: 20px;
     border: 1px solid var(--border);
-    backdrop-filter: blur(14px);
     box-shadow:
-        0 12px 30px var(--shadow),
-        0 0 0 1px rgba(255,255,255,0.4) inset;
-    margin-top: 1.2rem;
-
-    transform: translateY(0px) scale(1);
-    transition: all 0.28s ease;
-    animation: fadeIn 0.9s ease-out;
+        0 4px 12px rgba(0,0,0,0.04),
+        0 0 0 1px rgba(255,255,255,0.9) inset;
+    
+    margin-top: 1.4rem;
+    transition: all 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
+    transform: translateY(-4px);
     box-shadow:
-        0 18px 38px rgba(0,0,0,0.18),
-        0 0 14px rgba(48,102,255,0.18);
-    border-color: rgba(48,102,255,0.4);
+        0 8px 22px rgba(0,0,0,0.06),
+        0 0 0 1px rgba(255,255,255,1) inset;
 }
 
 /* Typography */
-h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--font-dark);
-    letter-spacing: -1.5px;
-    margin-top: 1rem;
-    margin-bottom: -0.8rem;
-}
-
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--font-dark);
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
 }
 
 p, li {
     font-size: 1rem;
-    color: var(--font-light);
+    color: var(--text-medium);
     line-height: 1.55rem;
 }
 
-/* Bullet enhancement */
+/* Lists */
+ul {
+    margin-top: 0.6rem;
+}
 ul li {
     margin-bottom: 6px;
-    position: relative;
     padding-left: 14px;
+    position: relative;
 }
-
 ul li::before {
     content: "";
     position: absolute;
     left: 0;
     top: 9px;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     background: var(--accent);
     border-radius: 50%;
 }
 
-/* Clean links */
-a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-}
-a:hover {
-    text-decoration: underline;
-}
-
 /* Buttons */
 .stButton > button {
-    background: linear-gradient(135deg, #ffffff, #eef1ff);
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
     padding: 0.5rem 1.1rem;
     font-weight: 600;
-    transition: 0.25s ease;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
 }
 
 .stButton > button:hover {
     transform: translateY(-3px);
     border-color: var(--accent);
-    box-shadow:
-        0 10px 20px rgba(48,102,255,0.25),
-        0 0 12px rgba(48,102,255,0.25);
+    color: var(--accent);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
 }
+
 </style>
 """, unsafe_allow_html=True)
 
+# ============================================================
+# Load Resume
+# ============================================================
+resume_path = Path("files/Vibinraj D Resume.pdf")
 
-# ---------------------------------------
-# Begin Content
-# ---------------------------------------
+# ============================================================
+# Content Starts
+# ============================================================
 st.markdown("<div class='container'>", unsafe_allow_html=True)
 
-# Header
+# ------------------ HEADER ------------------
 st.markdown("<h1>Vibinraj D</h1>", unsafe_allow_html=True)
-st.markdown("<p style='font-size:1.2rem;color:#444;'>Senior Business Analyst</p>", unsafe_allow_html=True)
+st.markdown("<p class='subtitle'>Senior Business Analyst</p>", unsafe_allow_html=True)
 
 
-# ================================
-# Profile Summary
-# ================================
+# ------------------ SUMMARY ------------------
 st.markdown("<div class='section-title'>Profile Summary</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class='card'>
-Tech-driven Senior Business Analyst with hands-on expertise in data analytics, automation, 
-and business intelligence. Experienced in developing automated data pipelines, dashboards, 
-reporting frameworks, and workflow automation using Power BI, BigQuery, SQL, Python and AppScript. 
-Focused on transforming raw datasets into insights that drive marketing, finance and operational decisions.
+Tech-driven Senior Business Analyst with strong experience in data analytics, workflow automation and 
+business intelligence. Specialized in building automated reporting ecosystems using Power BI, SQL, BigQuery, 
+Python and AppScript. Skilled in transforming large datasets into business decisions for marketing, finance 
+and operations.
 </div>
 """, unsafe_allow_html=True)
 
 
-# ================================
-# Experience
-# ================================
+# ------------------ EXPERIENCE ------------------
 st.markdown("<div class='section-title'>Experience</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 experience = [
@@ -197,10 +181,10 @@ experience = [
         "company": "Analytics Avenue",
         "period": "Jul 2025 – Present",
         "items": [
-            "Designed and deployed automated BI systems using Power BI, BigQuery, SQL and AppScript.",
-            "Built ETL automation pipelines for marketing and finance analytics.",
-            "Developed audit, churn and financial dashboards improving decision visibility.",
-            "Managed data governance, automated reporting workflows and Jira-based tracking."
+            "Designed and deployed automated BI platforms using Power BI, SQL and BigQuery.",
+            "Created ETL pipelines for marketing and finance reporting automation.",
+            "Developed churn, audit and revenue dashboards.",
+            "Implemented data governance and workflow orchestration using Jira."
         ]
     },
     {
@@ -208,10 +192,10 @@ experience = [
         "company": "Analytics Avenue",
         "period": "Aug 2024 – Jul 2025",
         "items": [
-            "Created API-based dashboards for ad and client performance analytics.",
-            "Automated CRM workflows enhancing lead accuracy by 25%.",
-            "Built reporting pipelines using BigQuery + AppScript automation.",
-            "Linked campaign insights with revenue impact layers."
+            "Built API-integrated dashboards for marketing analytics.",
+            "Automated CRM tracking workflows improving accuracy by 25%.",
+            "Developed reporting systems using BigQuery and AppScript.",
+            "Linked campaign metrics with revenue intelligence."
         ]
     },
     {
@@ -219,9 +203,9 @@ experience = [
         "company": "Analytics Avenue",
         "period": "Sep 2023 – Aug 2024",
         "items": [
-            "Worked on SQL, Power BI, Python automation and Excel enhancements.",
-            "Developed prototype dashboards improving decision visibility by 20%.",
-            "Built automation scripts and EDA-based insights for internal teams."
+            "Worked with SQL, Power BI, Python automation and Excel reporting.",
+            "Developed prototype dashboards enhancing strategic visibility.",
+            "Built EDA and automation scripts for internal analytics."
         ]
     }
 ]
@@ -238,34 +222,32 @@ for e in experience:
     """, unsafe_allow_html=True)
 
 
-# ================================
-# Projects
-# ================================
+# ------------------ PROJECTS ------------------
 st.markdown("<div class='section-title'>Projects</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 projects = [
     {
         "name": "Marketing Performance Automation Dashboard",
-        "desc": "Automated reporting for ad spend, ROI, CAC and conversion performance.",
+        "desc": "Automated dashboard ecosystem for ad spend, ROI, CAC and conversion trends.",
         "highlights": [
-            "Meta and Google Ads API integration",
-            "23% faster decision-making through live refresh cycles"
+            "Integrated Meta & Google Ads API data",
+            "23% faster decision-making via automated refresh cycles"
         ]
     },
     {
         "name": "Churn Prediction & Sales Automation",
-        "desc": "Predictive churn model with automated reporting layers.",
+        "desc": "Python + BigQuery based predictive churn model with automated reporting.",
         "highlights": [
-            "80% manual reporting reduction",
-            "Higher retention forecasting accuracy"
+            "Reduced manual reporting by 80%",
+            "Improved retention forecasting visibility"
         ]
     },
     {
-        "name": "Automated Audit & Financial Reporting",
-        "desc": "Real-time audit and finance analytics with automated ETL runs.",
+        "name": "Audit & Financial Reporting Automation",
+        "desc": "End-to-end automated audit + finance dashboards with ETL triggers.",
         "highlights": [
-            "Daily automated updates",
-            "Improved leadership reporting clarity"
+            "Daily scheduled automation",
+            "Enhanced leadership reporting clarity"
         ]
     }
 ]
@@ -282,17 +264,15 @@ for p in projects:
     """, unsafe_allow_html=True)
 
 
-# ================================
-# Skills
-# ================================
+# ------------------ SKILLS ------------------
 st.markdown("<div class='section-title'>Skills</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 skills = {
-    "Tools": ["Power BI", "Excel", "GCP BigQuery", "Google AppScript"],
-    "Programming": ["SQL", "Python (Pandas, NumPy, Matplotlib, Seaborn)"],
-    "Analytics": ["Marketing Analytics", "Financial Analytics", "Churn Models", "Market Basket Analysis", "Time Series", "EDA"],
-    "Automation": ["API Integration", "AppScript Automation", "Workflow Automation"],
-    "Operational": ["Jira", "Reporting Management", "Cross-Functional Collaboration"]
+    "Tools": ["Power BI", "Excel", "BigQuery", "AppScript"],
+    "Programming": ["SQL", "Python"],
+    "Analytics": ["Marketing Analytics", "Financial Analytics", "Churn Models", "Time Series", "EDA"],
+    "Automation": ["API Integration", "ETL Automation"],
+    "Operations": ["Jira", "Reporting Frameworks"]
 }
 
 st.markdown("<div class='card'>", unsafe_allow_html=True)
@@ -301,20 +281,18 @@ for cat, items in skills.items():
 st.markdown("</div>", unsafe_allow_html=True)
 
 
-# ================================
-# Resume Download
-# ================================
+# ------------------ RESUME ------------------
 st.markdown("<div class='section-title'>Resume</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-resume_path = Path("files/Vibinraj D Resume.pdf")
 if resume_path.exists():
-    with open(resume_path, "rb") as pdf:
-        st.download_button("Download Resume (PDF)", pdf, "Vibinraj_D_Resume.pdf", mime="application/pdf")
+    with open(resume_path, "rb") as f:
+        st.download_button("Download Resume (PDF)", f, "Vibinraj_D_Resume.pdf", mime="application/pdf")
 else:
     st.write("Resume file not found. Place it in files/Vibinraj D Resume.pdf")
 
 st.markdown("</div>", unsafe_allow_html=True)
 
+# End container
 st.markdown("</div>", unsafe_allow_html=True)
