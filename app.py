@@ -1,29 +1,34 @@
 import streamlit as st
 from pathlib import Path
 
-st.set_page_config(page_title="Portfolio | Vibinraj D", layout="wide")
+st.set_page_config(page_title="Vibinraj D | Portfolio", layout="wide")
 
-# ------------------------------
-# Advanced Modern CSS (Animated)
-# ------------------------------
+# ============================================
+# ADVANCED UI CSS (Glass + Depth + Motion)
+# ============================================
 st.markdown("""
 <style>
 
-/* ---------- ROOT VARIABLES ---------- */
 :root {
-    --bg: #f8fafc;
-    --card-bg: #ffffff;
-    --text-dark: #111111;
-    --text-light: #333333;
-    --accent: #2563eb;
-    --shadow: rgba(0,0,0,0.08);
+    --bg: #eef2f7;
+    --card: rgba(255,255,255,0.78);
+    --border: rgba(0,0,0,0.08);
+    --shadow: rgba(0,0,0,0.12);
+    --accent: #3066ff;
+    --font-dark: #0f0f0f;
+    --font-light: #333333;
 }
 
-/* Global */
-body {
-    font-family: 'Inter', sans-serif;
+/* Page background */
+.stApp {
     background: var(--bg);
-    animation: fadeIn 0.8s ease-out;
+}
+
+/* Center container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    animation: fadeIn 0.9s ease-out;
 }
 
 /* Fade-in animation */
@@ -32,108 +37,86 @@ body {
     to { opacity: 1; transform: translateY(0);}
 }
 
-/* Slide-in section titles */
+/* Section titles */
 .section-title {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     font-weight: 800;
-    color: var(--text-dark);
-    animation: slideIn 0.6s ease-out;
+    color: var(--font-dark);
+    letter-spacing: -0.5px;
+    margin-top: 2.5rem;
+    margin-bottom: 0.4rem;
+    animation: slideIn 0.55s ease-out;
 }
+
 @keyframes slideIn {
-    from { opacity:0; transform: translateX(-25px);}
-    to { opacity:1; transform: translateX(0);}
+    from { opacity:0; transform: translateX(-18px); }
+    to { opacity:1; transform: translateX(0); }
 }
 
 .section-line {
-    width: 70px;
-    height: 3px;
-    background: linear-gradient(90deg, #2563eb, #6366f1);
-    border-radius: 10px;
-    box-shadow: 0 0 8px rgba(99,102,241,0.4);
-    animation: grow 0.8s ease-out;
+    width: 85px;
+    height: 4px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--accent), #7b5dfc);
+    animation: grow 0.7s ease-out;
 }
 @keyframes grow {
     from { width: 0px; }
-    to { width: 70px; }
+    to { width: 85px; }
 }
 
-/* ---------- CARD STYLING ---------- */
+/* Premium glass-card */
 .card {
-    background: var(--card-bg);
-    padding: 1.6rem 1.8rem;
-    border-radius: 18px;
-    border: 1px solid rgba(0,0,0,0.06);
+    background: var(--card);
+    padding: 1.8rem 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(14px);
     box-shadow:
-        0 10px 24px var(--shadow),
-        0 0 0 1px rgba(255,255,255,0.5) inset;
+        0 12px 30px var(--shadow),
+        0 0 0 1px rgba(255,255,255,0.4) inset;
+    margin-top: 1.2rem;
 
-    transition: all 0.25s ease-out;
-    animation: fadeIn 0.7s ease-out;
+    transform: translateY(0px) scale(1);
+    transition: all 0.28s ease;
+    animation: fadeIn 0.9s ease-out;
 }
 
-/* Card hover: depth + scale + subtle glow */
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.02);
     box-shadow:
-        0 18px 32px rgba(0,0,0,0.12),
-        0 0 20px rgba(37,99,235,0.15);
-    border-color: rgba(37,99,235,0.35);
+        0 18px 38px rgba(0,0,0,0.18),
+        0 0 14px rgba(48,102,255,0.18);
+    border-color: rgba(48,102,255,0.4);
 }
 
 /* Typography */
-h1, h2, h3 {
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--font-dark);
+    letter-spacing: -1.5px;
+    margin-top: 1rem;
+    margin-bottom: -0.8rem;
+}
+
+h3 {
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--font-dark);
 }
 
 p, li {
     font-size: 1rem;
-    color: var(--text-light);
+    color: var(--font-light);
+    line-height: 1.55rem;
 }
 
-/* Links */
-a {
-    color: var(--accent);
-    font-weight: 500;
-    text-decoration: none;
-    transition: 0.2s;
-}
-a:hover {
-    color: #1d4ed8;
-    text-shadow: 0 0 6px rgba(37,99,235,0.3);
-}
-
-/* Container */
-.container {
-    max-width: 1000px;
-    margin: auto;
-    animation: fadeIn 0.6s ease-out;
-}
-
-/* Buttons */
-.stButton > button {
-    background: linear-gradient(135deg, #ffffff, #eef2ff);
-    border: 1px solid rgba(0,0,0,0.10);
-    border-radius: 14px;
-    padding: 0.55rem 1.3rem;
-    font-weight: 600;
-    transition: all 0.2s ease-out;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.stButton > button:hover {
-    transform: translateY(-3px);
-    border-color: #2563eb;
-    box-shadow:
-        0 10px 20px rgba(37,99,235,0.25),
-        0 0 14px rgba(99,102,241,0.25);
-}
-
-/* List bullets */
+/* Bullet enhancement */
 ul li {
     margin-bottom: 6px;
     position: relative;
-    padding-left: 15px;
+    padding-left: 14px;
 }
 
 ul li::before {
@@ -147,52 +130,77 @@ ul li::before {
     border-radius: 50%;
 }
 
+/* Clean links */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(135deg, #ffffff, #eef1ff);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 0.5rem 1.1rem;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow:
+        0 10px 20px rgba(48,102,255,0.25),
+        0 0 12px rgba(48,102,255,0.25);
+}
 </style>
 """, unsafe_allow_html=True)
 
 
-# ------------------------------
-# Load PDF
-# ------------------------------
-resume_path = Path("files/Vibinraj D Resume.pdf")
-
-# ------------------------------
-# Begin Container
-# ------------------------------
+# ---------------------------------------
+# Begin Content
+# ---------------------------------------
 st.markdown("<div class='container'>", unsafe_allow_html=True)
 
-# ------------------------------
 # Header
-# ------------------------------
 st.markdown("<h1>Vibinraj D</h1>", unsafe_allow_html=True)
-st.markdown("<p>Senior Business Analyst</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-size:1.2rem;color:#444;'>Senior Business Analyst</p>", unsafe_allow_html=True)
 
-# ------------------------------
+
+# ================================
 # Profile Summary
-# ------------------------------
+# ================================
 st.markdown("<div class='section-title'>Profile Summary</div><div class='section-line'></div>", unsafe_allow_html=True)
+
 st.markdown("""
 <div class='card'>
-Tech-driven Senior Business Analyst with 1+ year of experience in data analytics, automation and business intelligence. 
-Experienced in building automated data pipelines, dashboards, reporting systems and workflow automation using Power BI, BigQuery, SQL, Python and AppScript. Skilled in transforming large datasets into actionable insights for marketing, finance and operations teams.
+Tech-driven Senior Business Analyst with hands-on expertise in data analytics, automation, 
+and business intelligence. Experienced in developing automated data pipelines, dashboards, 
+reporting frameworks, and workflow automation using Power BI, BigQuery, SQL, Python and AppScript. 
+Focused on transforming raw datasets into insights that drive marketing, finance and operational decisions.
 </div>
 """, unsafe_allow_html=True)
 
-# ------------------------------
+
+# ================================
 # Experience
-# ------------------------------
+# ================================
 st.markdown("<div class='section-title'>Experience</div><div class='section-line'></div>", unsafe_allow_html=True)
 
-experience_data = [
+experience = [
     {
         "role": "Senior Business Analyst",
         "company": "Analytics Avenue",
         "period": "Jul 2025 – Present",
         "items": [
-            "Designed and deployed automated BI systems using Power BI, GCP BigQuery, SQL and AppScript.",
-            "Built ETL pipelines for marketing and finance analytics automation.",
-            "Developed audit, churn and financial reporting dashboards.",
-            "Managed data governance and workflow orchestration."
+            "Designed and deployed automated BI systems using Power BI, BigQuery, SQL and AppScript.",
+            "Built ETL automation pipelines for marketing and finance analytics.",
+            "Developed audit, churn and financial dashboards improving decision visibility.",
+            "Managed data governance, automated reporting workflows and Jira-based tracking."
         ]
     },
     {
@@ -200,10 +208,10 @@ experience_data = [
         "company": "Analytics Avenue",
         "period": "Aug 2024 – Jul 2025",
         "items": [
-            "Built API-based marketing dashboards.",
-            "Automated CRM workflows improving tracking accuracy by 25%.",
-            "Created reporting pipelines using BigQuery and AppScript.",
-            "Connected campaign analytics with revenue insights."
+            "Created API-based dashboards for ad and client performance analytics.",
+            "Automated CRM workflows enhancing lead accuracy by 25%.",
+            "Built reporting pipelines using BigQuery + AppScript automation.",
+            "Linked campaign insights with revenue impact layers."
         ]
     },
     {
@@ -211,52 +219,53 @@ experience_data = [
         "company": "Analytics Avenue",
         "period": "Sep 2023 – Aug 2024",
         "items": [
-            "Worked on SQL, Power BI, Python and automation.",
-            "Developed prototype dashboards improving visibility by 20%.",
-            "Built automation scripts and EDA models."
+            "Worked on SQL, Power BI, Python automation and Excel enhancements.",
+            "Developed prototype dashboards improving decision visibility by 20%.",
+            "Built automation scripts and EDA-based insights for internal teams."
         ]
     }
 ]
 
-for exp in experience_data:
+for e in experience:
     st.markdown(f"""
     <div class='card'>
-        <h3>{exp['role']} – {exp['company']}</h3>
-        <p><b>{exp['period']}</b></p>
+        <h3>{e['role']} – {e['company']}</h3>
+        <p><b>{e['period']}</b></p>
         <ul>
-            {''.join([f"<li>{item}</li>" for item in exp['items']])}
+            {''.join([f"<li>{i}</li>" for i in e['items']])}
         </ul>
     </div>
     """, unsafe_allow_html=True)
 
-# ------------------------------
+
+# ================================
 # Projects
-# ------------------------------
+# ================================
 st.markdown("<div class='section-title'>Projects</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 projects = [
     {
         "name": "Marketing Performance Automation Dashboard",
-        "desc": "Automated dashboards for ad spend, ROI and conversion tracking.",
+        "desc": "Automated reporting for ad spend, ROI, CAC and conversion performance.",
         "highlights": [
-            "Meta & Google Ads API integration",
-            "23% faster decision-making via automated refresh"
+            "Meta and Google Ads API integration",
+            "23% faster decision-making through live refresh cycles"
         ]
     },
     {
         "name": "Churn Prediction & Sales Automation",
-        "desc": "Churn prediction system using Python & BigQuery.",
+        "desc": "Predictive churn model with automated reporting layers.",
         "highlights": [
             "80% manual reporting reduction",
-            "Improved retention forecasting accuracy"
+            "Higher retention forecasting accuracy"
         ]
     },
     {
         "name": "Automated Audit & Financial Reporting",
-        "desc": "Power BI + BigQuery based audit tracking with automated ETL.",
+        "desc": "Real-time audit and finance analytics with automated ETL runs.",
         "highlights": [
             "Daily automated updates",
-            "Enhanced leadership financial visibility"
+            "Improved leadership reporting clarity"
         ]
     }
 ]
@@ -272,39 +281,40 @@ for p in projects:
     </div>
     """, unsafe_allow_html=True)
 
-# ------------------------------
+
+# ================================
 # Skills
-# ------------------------------
+# ================================
 st.markdown("<div class='section-title'>Skills</div><div class='section-line'></div>", unsafe_allow_html=True)
 
 skills = {
     "Tools": ["Power BI", "Excel", "GCP BigQuery", "Google AppScript"],
     "Programming": ["SQL", "Python (Pandas, NumPy, Matplotlib, Seaborn)"],
-    "Analytics": ["Marketing Analytics", "Financial Analytics", "Churn Analysis", "Market Basket Analysis", "Time Series", "EDA"],
+    "Analytics": ["Marketing Analytics", "Financial Analytics", "Churn Models", "Market Basket Analysis", "Time Series", "EDA"],
     "Automation": ["API Integration", "AppScript Automation", "Workflow Automation"],
-    "Project": ["Jira", "Reporting Management", "Cross-Functional Collaboration"]
+    "Operational": ["Jira", "Reporting Management", "Cross-Functional Collaboration"]
 }
 
 st.markdown("<div class='card'>", unsafe_allow_html=True)
-for category, items in skills.items():
-    st.markdown(f"**{category}:** " + ", ".join(items))
+for cat, items in skills.items():
+    st.markdown(f"**{cat}:** " + ", ".join(items))
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ------------------------------
+
+# ================================
 # Resume Download
-# ------------------------------
+# ================================
 st.markdown("<div class='section-title'>Resume</div><div class='section-line'></div>", unsafe_allow_html=True)
+
 st.markdown("<div class='card'>", unsafe_allow_html=True)
 
+resume_path = Path("files/Vibinraj D Resume.pdf")
 if resume_path.exists():
-    with open(resume_path, "rb") as f:
-        st.download_button("Download Resume (PDF)", f, "Vibinraj_D_Resume.pdf", mime="application/pdf")
+    with open(resume_path, "rb") as pdf:
+        st.download_button("Download Resume (PDF)", pdf, "Vibinraj_D_Resume.pdf", mime="application/pdf")
 else:
-    st.warning("Resume file not found. Place it inside files/Vibinraj D Resume.pdf")
+    st.write("Resume file not found. Place it in files/Vibinraj D Resume.pdf")
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ------------------------------
-# End Container
-# ------------------------------
 st.markdown("</div>", unsafe_allow_html=True)
