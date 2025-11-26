@@ -11,124 +11,257 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------
-# LIGHT MODE + NEON GLOW ADVANCED CSS
+# ADVANCED LIGHT THEME + 3D GLOW CSS
 # ----------------------------------------------------------
 custom_css = """
 <style>
-/* Light clean background */
+/* Global */
 .stApp {
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-    color: #1f2937;
-    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #fdfdfd 0, #f5f7fb 45%, #edf1fa 100%);
+    color: #111827;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Main container spacing */
 main .block-container {
     padding-top: 2.5rem;
+    padding-bottom: 2rem;
     max-width: 1180px;
 }
 
-/* Sidebar light mode */
+/* Sidebar */
 section[data-testid="stSidebar"] {
     background: #ffffff !important;
-    border-right: 1px solid rgba(0,0,0,0.07);
+    border-right: 1px solid rgba(15,23,42,0.06);
+    box-shadow: 4px 0 18px rgba(15,23,42,0.04);
 }
 section[data-testid="stSidebar"] * {
-    color: #111827 !important;
+    color: #0f172a !important;
 }
 
-/* Neon glowing title */
+/* Section title + glow */
 .glow-text {
-    color: #0f172a;
-    text-shadow: 0 0 10px rgba(0, 153, 255, 0.35);
+    color: #020617;
+    text-shadow: 0 0 12px rgba(56,189,248,0.45), 0 0 26px rgba(129,140,248,0.4);
 }
-
-/* Section underline */
 .section-underline {
-    width: 70px;
+    width: 80px;
     height: 3px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #00baff, #6366f1, #b43cff);
-    box-shadow: 0 0 10px rgba(0,153,255,0.5);
     margin-bottom: 1rem;
+    background: linear-gradient(90deg, #06b6d4, #6366f1, #a855f7);
+    box-shadow: 0 0 16px rgba(56,189,248,0.7);
 }
 
-/* Glassmorphism card */
-.glass-card {
-    padding: 1.2rem 1.4rem;
-    border-radius: 1.3rem;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0,0,0,0.08);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    transition: all 0.25s ease-out;
+/* 3D container with perspective */
+.card-3d-wrapper {
+    perspective: 1200px;
 }
 
-/* CARD hover glow */
-.glass-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0,153,255,0.3);
-    box-shadow: 0 8px 24px rgba(0,153,255,0.25), 
-                0 0 16px rgba(99,102,241,0.25);
+/* 3D glass card with gradient border + glow */
+.glass-card-3d {
+    position: relative;
+    border-radius: 1.4rem;
+    padding: 1.25rem 1.35rem;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+    border: 1px solid rgba(148,163,184,0.55);
+    box-shadow:
+        0 14px 35px rgba(15,23,42,0.09),
+        0 0 0 1px rgba(255,255,255,0.7) inset;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+    overflow: hidden;
 }
 
-/* Tags */
+/* Gradient glow border as pseudo element */
+.glass-card-3d::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(circle at 0% 0%, rgba(56,189,248,0.7), transparent 55%),
+                radial-gradient(circle at 100% 0%, rgba(129,140,248,0.6), transparent 60%),
+                radial-gradient(circle at 0% 100%, rgba(236,72,153,0.55), transparent 60%);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+/* Inner soft highlight layer */
+.glass-card-3d::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.8), transparent 55%);
+    mix-blend-mode: screen;
+    opacity: 0.0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out;
+}
+
+/* 3D Hover motion + glow */
+.glass-card-3d:hover {
+    transform: translateY(-8px) translateZ(16px) rotateX(1deg);
+    box-shadow:
+        0 18px 45px rgba(15,23,42,0.22),
+        0 0 30px rgba(56,189,248,0.35);
+    border-color: rgba(59,130,246,0.75);
+}
+.glass-card-3d:hover::before {
+    opacity: 1;
+}
+.glass-card-3d:hover::after {
+    opacity: 0.7;
+}
+
+/* Floating tag chips */
 .tech-tag {
     display: inline-block;
-    padding: 0.22rem 0.65rem;
-    margin: 0.15rem;
-    font-size: 0.75rem;
+    padding: 0.18rem 0.7rem;
+    margin: 0.16rem;
+    font-size: 0.78rem;
     border-radius: 999px;
-    background: rgba(255,255,255,0.85);
-    border: 1px solid rgba(0,0,0,0.2);
-    transition: all 0.2s ease-out;
+    border: 1px solid rgba(148,163,184,0.9);
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(241,245,249,0.98));
+    box-shadow: 0 4px 10px rgba(148,163,184,0.35);
+    transform: translateZ(10px);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
 }
-
-/* Tag hover neon */
 .tech-tag:hover {
-    border-color: #00baff;
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(0,183,255,0.45);
+    border-color: #0ea5e9;
+    box-shadow: 0 7px 18px rgba(56,189,248,0.45);
+    transform: translateY(-2px) translateZ(18px);
 }
 
 /* Buttons */
 .stButton > button {
-    background: rgba(255,255,255,0.9);
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 0.55rem 1.2rem;
+    background: linear-gradient(135deg, #ffffff, #e5f4ff);
     border-radius: 999px;
-    color: #111827;
+    border: 1px solid rgba(148,163,184,0.8);
+    color: #0f172a;
     font-weight: 600;
-    transition: all 0.25s ease-out;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    padding: 0.5rem 1.2rem;
+    box-shadow:
+        0 8px 18px rgba(148,163,184,0.65),
+        0 0 0 1px rgba(255,255,255,0.8) inset;
+    transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, border-color 0.18s ease-out, background 0.18s ease-out;
 }
-
-/* Button hover glow */
 .stButton > button:hover {
-    border-color: #009dff;
-    color: #007fff;
-    box-shadow: 0 0 15px rgba(0,153,255,0.45),
-                0 6px 20px rgba(0,153,255,0.15);
-    transform: translateY(-3px);
+    border-color: #0ea5e9;
+    background: linear-gradient(135deg, #e0f5ff, #ffffff);
+    transform: translateY(-2px);
+    box-shadow:
+        0 11px 26px rgba(56,189,248,0.55),
+        0 0 18px rgba(129,140,248,0.38);
 }
 
-/* Clean link hover glow */
+/* Links */
 a {
-    color: #0066cc;
+    color: #2563eb;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.22s ease-out;
+    transition: color 0.18s ease-out, text-shadow 0.18s ease-out;
 }
 a:hover {
-    color: #009dff;
-    text-shadow: 0 0 12px rgba(0,153,255,0.4);
+    color: #0ea5e9;
+    text-shadow: 0 0 9px rgba(56,189,248,0.7);
 }
+
+/* Popup overlay */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(15,23,42,0.25), rgba(15,23,42,0.55));
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popup card */
+.popup-card {
+    position: relative;
+    width: min(90%, 760px);
+    border-radius: 1.4rem;
+    padding: 1.6rem 1.7rem 1.3rem 1.7rem;
+    background: radial-gradient(circle at top left, #ffffff 0, #f9fafb 45%, #eef2ff 100%);
+    border: 1px solid rgba(148,163,184,0.75);
+    box-shadow:
+        0 20px 55px rgba(15,23,42,0.45),
+        0 0 24px rgba(56,189,248,0.65);
+    animation: popup-in 0.22s ease-out;
+}
+
+/* Popup gradient edge */
+.popup-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from 160deg,
+        rgba(56,189,248,0.95),
+        rgba(129,140,248,0.95),
+        rgba(236,72,153,0.95),
+        rgba(56,189,248,0.95)
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0.72;
+}
+
+/* Popup animation */
+@keyframes popup-in {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Popup close button container tweak */
+.popup-close-row {
+    text-align: right;
+    margin-top: 0.8rem;
+}
+
+/* Sidebar radio hover */
+.stRadio > div:hover {
+    text-shadow: 0 0 8px rgba(56,189,248,0.45);
+}
+
+/* Metrics align nicer on home */
+[data-testid="stMetricValue"] {
+    font-weight: 700;
+}
+
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ----------------------------------------------------------
-# PERSONAL INFORMATION (FROM RESUME)
+# SESSION STATE (for popups)
+# ----------------------------------------------------------
+if "show_project_popup" not in st.session_state:
+    st.session_state.show_project_popup = False
+
+if "popup_project_index" not in st.session_state:
+    st.session_state.popup_project_index = None
+
+# ----------------------------------------------------------
+# CORE PERSONAL INFO (FROM YOUR RESUME)
 # ----------------------------------------------------------
 NAME = "V I B I N R A J  D"
 ROLE_TITLE = "Senior Business Analyst"
@@ -139,16 +272,17 @@ LINKEDIN = "https://www.linkedin.com/in/vibinraj-d98"
 GITHUB = "https://github.com/vibinrajd"
 
 SUMMARY = (
-    "Tech-driven Senior Business Analyst with expertise in Data Analytics, Automation, "
-    "and Business Intelligence. Skilled in ETL pipelines, API automation, reporting engines, "
-    "Power BI systems, SQL workflows, Python automations, and GCP BigQuery data engineering."
+    "Tech-driven Senior Business Analyst with hands-on experience in Data Analytics, "
+    "Process Automation, and Business Intelligence. Skilled in building automated data "
+    "pipelines, interactive dashboards, and scalable reporting systems using Power BI, SQL, "
+    "Python, GCP BigQuery, and AppScript, with a strong focus on ETL automation, API "
+    "integration, and CRM optimization across Marketing, Finance, and Operations."
 )
 
-# Resume PDF from upload
-RESUME_PATH = Path("/mnt/data/Vibinraj D Resume.pdf")
+RESUME_PATH = Path("files/Vibinraj D Resume.pdf")  # Put the PDF here locally
 
 # ----------------------------------------------------------
-# RESUME → EXPERIENCE
+# EXPERIENCE
 # ----------------------------------------------------------
 experience = [
     {
@@ -156,10 +290,10 @@ experience = [
         "role": "Senior Business Analyst",
         "period": "Jul 2025 – Present",
         "points": [
-            "Designed & deployed automated BI systems using Power BI, BigQuery, SQL & AppScript (70% faster reporting).",
-            "Developed ETL pipelines for automated marketing and finance ingestion.",
-            "Built audit, churn, and financial analytics dashboards for strategic decisions.",
-            "Owned data governance & workflow operations using Jira + automation tools."
+            "Designed and deployed automated BI systems using Power BI, GCP BigQuery, SQL, and AppScript, cutting report preparation time by 70%.",
+            "Built ETL pipelines to automate data ingestion from APIs and databases for marketing and finance dashboards.",
+            "Led development of company-wide audit, churn, and financial reporting dashboards to support strategic planning.",
+            "Managed data governance, performance tracking, and workflows through Jira and automated reporting tools."
         ]
     },
     {
@@ -167,10 +301,10 @@ experience = [
         "role": "Business Analyst",
         "period": "Aug 2024 – Jul 2025",
         "points": [
-            "Developed self-refreshing dashboards using APIs for ad and client analytics.",
-            "Automated CRM workflows improving lead accuracy by 25%.",
-            "Built automated reporting pipelines via BigQuery + AppScript.",
-            "Connected campaign insights to revenue intelligence frameworks."
+            "Created self-refreshing marketing dashboards integrated with APIs for ad and client performance analytics.",
+            "Automated CRM workflows, increasing lead tracking accuracy and response efficiency by 25%.",
+            "Supported automation of reporting operations through BigQuery data pipelines and AppScript triggers.",
+            "Contributed to end-to-end reporting frameworks connecting campaign insights with revenue impact."
         ]
     },
     {
@@ -178,51 +312,51 @@ experience = [
         "role": "Data Analyst Intern",
         "period": "Sep 2023 – Aug 2024",
         "points": [
-            "Hands-on experience with SQL, Power BI, Python & automation.",
-            "Built dashboards and EDA models improving visibility by 20%.",
-            "Created automation scripts & prototype BI solutions."
+            "Gained practical exposure to SQL, Power BI, Excel, and Python-based automation.",
+            "Assisted in building prototype dashboards and EDA models that enhanced decision visibility by 20%.",
+            "Developed foundational automation scripts and visual analytics projects across industries."
         ]
     }
 ]
 
 # ----------------------------------------------------------
-# PROJECTS FROM RESUME
+# PROJECTS
 # ----------------------------------------------------------
 projects = [
     {
         "title": "Marketing Performance Automation Dashboard",
-        "summary": "Dual dashboards (Ad & Client side) automated using Meta + Google APIs.",
+        "summary": "Developed dual dashboards (Ad-side & Client-side) to track ad spend, ROI, and conversions.",
         "highlights": [
-            "Real-time API automated ingestion.",
-            "23% faster campaign optimization."
+            "Automated data collection from Meta & Google APIs into Power BI for near real-time insights.",
+            "Enhanced campaign optimization efficiency by 23% through automated performance reporting."
         ],
-        "tech": ["Power BI", "AppScript", "BigQuery", "API Integration"]
+        "tech": ["Power BI", "GCP BigQuery", "Google AppScript", "Meta & Google APIs"]
     },
     {
-        "title": "Churn Prediction & Sales Automation System",
-        "summary": "Churn prediction using Python + BigQuery with automated tracking.",
+        "title": "Churn Prediction & Sales Automation Dashboard",
+        "summary": "Designed Python + BigQuery-based churn model to monitor and predict customer retention.",
         "highlights": [
-            "80% reduction in manual retention reporting.",
-            "Improved churn tracking accuracy."
+            "Automated data refresh using API triggers, reducing manual reporting by 80%.",
+            "Improved accuracy of retention tracking and boosted sales insights through predictive analytics."
         ],
-        "tech": ["Python", "BigQuery", "Machine Learning"]
+        "tech": ["Python", "BigQuery", "Machine Learning", "Automation"]
     },
     {
         "title": "Automated Audit & Financial Reporting System",
-        "summary": "End-to-end Power BI reporting with ETL refresh automation.",
+        "summary": "Built an end-to-end automated Power BI dashboard integrating audit logs and financial KPIs.",
         "highlights": [
-            "Real-time audit visibility.",
-            "Improved financial insights for leadership."
+            "Automated daily updates with AppScript & BigQuery ETL scripts, improving reporting accuracy.",
+            "Enabled real-time audit tracking and enhanced financial visibility for leadership decisions."
         ],
-        "tech": ["Power BI", "BigQuery", "AppScript"]
+        "tech": ["Power BI", "BigQuery", "AppScript", "Financial Analytics"]
     },
     {
-        "title": "Employee Performance Automation",
-        "summary": "Automated HR performance analytics.",
+        "title": "Workflow & Employee Performance Automation",
+        "summary": "Created an automated performance tracking system for employees using Power BI + AppScript.",
         "highlights": [
-            "18% improvement in reporting accuracy."
+            "Integrated HR datasets via BigQuery for live workforce analytics, improving accuracy by 18%."
         ],
-        "tech": ["Power BI", "BigQuery", "AppScript"]
+        "tech": ["Power BI", "BigQuery", "HR Analytics", "Automation"]
     }
 ]
 
@@ -230,140 +364,253 @@ projects = [
 # SKILLS
 # ----------------------------------------------------------
 skills_primary = [
-    "Power BI", "SQL", "Python (Pandas, NumPy, Matplotlib, Seaborn)",
-    "BigQuery", "AppScript Automation", "API Integration",
-    "Time Series Analysis", "EDA", "Marketing Analytics",
-    "Financial Analytics", "Churn Prediction", "Market Basket Analysis"
+    "Power BI",
+    "SQL",
+    "Python (Pandas, NumPy, Matplotlib, Seaborn)",
+    "GCP BigQuery",
+    "Google AppScript Automation",
+    "API Integration",
+    "Time Series Analysis",
+    "Exploratory Data Analysis (EDA)",
+    "Marketing Analytics",
+    "Financial Analytics",
+    "Churn Analysis",
+    "Market Basket Analysis"
 ]
 
 skills_secondary = [
-    "CRM Automation", "Workflow Automation", "Jira",
-    "Reporting Management", "Cross-Functional Collaboration"
+    "CRM Implementation & Optimization",
+    "Workflow Automation",
+    "Dashboard Automation",
+    "Jira & Project Tracking",
+    "Reporting Management",
+    "Cross-Functional Collaboration"
 ]
 
 # ----------------------------------------------------------
 # EDUCATION
 # ----------------------------------------------------------
 education = [
-    ("B.E. Electrical & Electronics Engineering", "UCE - BIT Campus", "2019–2023", "CGPA: 7.68"),
-    ("HSC", "Vidya Mandir Hr Sec School", "2019", "77.5%"),
-    ("SSLC", "Sri Krishna Hr Sec School", "2017", "89.4%")
+    ("B.E. - Electrical & Electronics Engineering", "University College of Engineering, BIT Campus, Tiruchirappalli", "2019 – 2023", "CGPA - 7.68"),
+    ("HSC", "Vidya Mandir Hr. Sec. School, Ariyalur", "2019", "77.5%"),
+    ("SSLC", "Sri Krishna Hr. Sec. School, Cuddalore", "2017", "89.4%")
 ]
 
 # ----------------------------------------------------------
 # CERTIFICATIONS
 # ----------------------------------------------------------
 certifications = [
-    "Data Processing Specialist – Aspiring Minds",
-    "Data Analytics – Analytics Avenue",
-    "Excel Certification – Great Learning",
-    "EV Charging System – Coursera"
+    "Data Processing Specialist - Aspiring Minds",
+    "Data Analytics - Analytics Avenue",
+    "Excel Certification - Great Learning",
+    "Electric Vehicle Charging System - Coursera"
 ]
 
 # ----------------------------------------------------------
 # ACHIEVEMENTS
 # ----------------------------------------------------------
 achievements = [
-    "CryptoTracker: Real-time crypto dashboard (35% improved analysis).",
-    "EV Analytics Dashboard for adoption + manufacturing insights (30% boost).",
-    "Market Basket Analysis improving inventory visibility by 15%.",
-    "Retail Sales EDA improving profit optimization by 10%.",
-    "Promoted to Senior Analyst within 1 year.",
-    "Conducted Power BI & Marketing Analytics workshops."
+    "CryptoTracker: Real-Time Market Analysis using Power BI with live APIs, improving analysis efficiency by 35%.",
+    "EV Data Insights Dashboard: EV adoption & manufacturing analytics, improving insight accessibility by 30%.",
+    "Market Basket Analysis using Python & Mlxtend, helping identify cross-selling opportunities and improving inventory management by 15%.",
+    "Retail Sales Analysis & Insights using Python EDA, boosting profit optimization by 10%.",
+    "Promoted to Senior Business Analyst within a year for leadership in automation projects.",
+    "Built and deployed company-wide Power BI & BigQuery reporting ecosystem.",
+    "Conducted Power BI & Marketing Analytics workshops under Analytics Avenue’s learning programs."
 ]
 
 # ----------------------------------------------------------
-# SIDEBAR
+# SIDEBAR NAV
 # ----------------------------------------------------------
 with st.sidebar:
     st.title("💼 Portfolio")
-    page = st.radio("Navigate", ["Home", "Experience", "Projects", "Skills", "Education", "Certifications", "Achievements", "Resume", "Contact"])
+    page = st.radio(
+        "Navigate",
+        ["Home", "Experience", "Projects", "Skills", "Education", "Certifications", "Achievements", "Resume", "Contact"]
+    )
 
 # ----------------------------------------------------------
-# HELPER
+# SECTION HEADER HELPER
 # ----------------------------------------------------------
-def section_header(txt):
-    st.markdown(f"<div class='glow-text' style='font-size:1.7rem;font-weight:900'>{txt}</div>", unsafe_allow_html=True)
+def section_header(title: str):
+    st.markdown(
+        f"<div class='glow-text' style='font-size:1.8rem;font-weight:900;margin-bottom:0.3rem;'>{title}</div>",
+        unsafe_allow_html=True
+    )
     st.markdown("<div class='section-underline'></div>", unsafe_allow_html=True)
+
+# ----------------------------------------------------------
+# POPUP RENDER HELPER
+# ----------------------------------------------------------
+def render_project_popup(idx: int):
+    if idx is None or idx < 0 or idx >= len(projects):
+        return
+    proj = projects[idx]
+    st.markdown("<div class='popup-overlay'>", unsafe_allow_html=True)
+    st.markdown("<div class='popup-card'>", unsafe_allow_html=True)
+
+    st.markdown(f"### {proj['title']}")
+    st.markdown(f"**Overview:** {proj['summary']}")
+    st.markdown(" ")
+    st.markdown("**Key Contributions:**")
+    for h in proj["highlights"]:
+        st.markdown(f"- {h}")
+
+    if proj["tech"]:
+        st.markdown(" ")
+        st.markdown("**Tech Stack:**")
+        tech_html = "".join([f"<span class='tech-tag'>{t}</span>" for t in proj["tech"]])
+        st.markdown(tech_html, unsafe_allow_html=True)
+
+    st.markdown("<div class='popup-close-row'>", unsafe_allow_html=True)
+    col1, col2 = st.columns([3, 1])
+    with col2:
+        if st.button("Close", key="close_popup_button"):
+            st.session_state.show_project_popup = False
+            st.session_state.popup_project_index = None
+    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
 # ----------------------------------------------------------
 # PAGES
 # ----------------------------------------------------------
 if page == "Home":
     section_header("Welcome")
-    st.markdown(f"## {NAME}")
-    st.markdown(f"### {ROLE_TITLE}")
-    st.markdown(SUMMARY)
-    st.markdown("---")
-    st.metric("Experience", "3+ Years")
-    st.metric("Expertise", "Analytics + Automation")
+    col1, col2 = st.columns([2, 1])
+
+    with col1:
+        st.markdown(f"## {NAME}")
+        st.markdown(f"### {ROLE_TITLE}")
+        st.markdown(SUMMARY)
+        st.markdown(" ")
+        mcol1, mcol2, mcol3 = st.columns(3)
+        with mcol1:
+            st.metric("Experience", "1+ Years")
+        with mcol2:
+            st.metric("Focus", "Analytics & Automation")
+        with mcol3:
+            st.metric("Tools", "Power BI • SQL • Python")
+    with col2:
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+        st.markdown("#### Quick Snapshot")
+        st.markdown(f"- 📍 Based in **{LOCATION}**")
+        st.markdown("- 🎯 Focused on automated reporting & scalable BI")
+        st.markdown("- 🤖 Experienced in marketing, finance & churn analytics")
+        st.markdown("- 🚀 Strong interest in GenAI + advanced analytics")
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
 elif page == "Experience":
     section_header("Work Experience")
     for exp in experience:
-        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown(f"### {exp['role']} • {exp['company']}")
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+        st.markdown(f"### {exp['role']} | {exp['company']}")
         st.markdown(f"**{exp['period']}**")
+        st.markdown(" ")
         for p in exp["points"]:
             st.markdown(f"- {p}")
-        st.markdown("</div><br>", unsafe_allow_html=True)
+        st.markdown("</div></div>", unsafe_allow_html=True)
+        st.markdown(" ")
 
 elif page == "Projects":
     section_header("Projects")
-    for proj in projects:
-        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown(f"### {proj['title']}")
-        st.markdown(proj["summary"])
-        st.markdown("**Highlights:**")
-        for h in proj["highlights"]:
-            st.markdown(f"- {h}")
-        st.markdown("<br>", unsafe_allow_html=True)
-        tech_html = "".join([f"<span class='tech-tag'>{t}</span>" for t in proj["tech"]])
-        st.markdown(tech_html, unsafe_allow_html=True)
-        st.markdown("</div><br>", unsafe_allow_html=True)
+    for i, proj in enumerate(projects):
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+        cols = st.columns([3, 1])
+        with cols[0]:
+            st.markdown(f"### {proj['title']}")
+            st.markdown(proj["summary"])
+            st.markdown(" ")
+            tech_html = "".join([f"<span class='tech-tag'>{t}</span>" for t in proj["tech"]])
+            st.markdown(tech_html, unsafe_allow_html=True)
+        with cols[1]:
+            if st.button("View details", key=f"proj_btn_{i}"):
+                st.session_state.show_project_popup = True
+                st.session_state.popup_project_index = i
+        st.markdown("</div></div>", unsafe_allow_html=True)
+        st.markdown(" ")
+
+    # Popup overlay if needed
+    if st.session_state.show_project_popup:
+        render_project_popup(st.session_state.popup_project_index)
 
 elif page == "Skills":
     section_header("Skills")
-    st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.write("### Technical Skills")
-    for s in skills_primary: st.markdown(f"- {s}")
-    st.markdown("</div><br>", unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
 
-    st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.write("### Soft & Supporting Skills")
-    for s in skills_secondary: st.markdown(f"- {s}")
-    st.markdown("</div>", unsafe_allow_html=True)
+    with col1:
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+        st.markdown("### Technical Skills")
+        for s in skills_primary:
+            st.markdown(f"- {s}")
+        st.markdown("</div></div>", unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+        st.markdown("### Supporting & Functional Skills")
+        for s in skills_secondary:
+            st.markdown(f"- {s}")
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
 elif page == "Education":
     section_header("Education")
     for degree, inst, yr, score in education:
-        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+        st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+        st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
         st.markdown(f"### {degree}")
-        st.markdown(f"{inst} ({yr})")
-        st.markdown(f"**{score}**")
-        st.markdown("</div><br>", unsafe_allow_html=True)
+        st.markdown(f"{inst}")
+        st.markdown(f"**{yr} | {score}**")
+        st.markdown("</div></div>", unsafe_allow_html=True)
+        st.markdown(" ")
 
 elif page == "Certifications":
     section_header("Certifications")
+    st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+    st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
     for c in certifications:
         st.markdown(f"- {c}")
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
 elif page == "Achievements":
     section_header("Achievements")
+    st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+    st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
     for a in achievements:
         st.markdown(f"- {a}")
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
 elif page == "Resume":
     section_header("Resume")
+    st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+    st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
     if RESUME_PATH.exists():
         with open(RESUME_PATH, "rb") as f:
-            st.download_button("📄 Download Resume", f, "Vibinraj_Resume.pdf", "application/pdf")
-    st.info("Your resume has been embedded from the uploaded file.")
+            st.download_button(
+                "📄 Download Resume (PDF)",
+                f,
+                file_name="Vibinraj_D_Resume.pdf",
+                mime="application/pdf"
+            )
+        st.markdown(
+            "Your resume is embedded from the local `files/Vibinraj D Resume.pdf` path."
+        )
+    else:
+        st.warning(
+            "Resume file not found. Create a `files` folder and place your file as `Vibinraj D Resume.pdf` inside it."
+        )
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
 elif page == "Contact":
     section_header("Contact")
-    st.write(f"📧 Email: {EMAIL}")
-    st.write(f"📱 Phone: {PHONE}")
-    st.write(f"📍 Location: {LOCATION}")
-    st.write(f"🔗 LinkedIn: {LINKEDIN}")
-    st.write(f"💻 GitHub: {GITHUB}")
+    st.markdown("<div class='card-3d-wrapper'>", unsafe_allow_html=True)
+    st.markdown("<div class='glass-card-3d'>", unsafe_allow_html=True)
+    st.markdown(f"- **Email:** `{EMAIL}`")
+    st.markdown(f"- **Phone:** `{PHONE}`")
+    st.markdown(f"- **Location:** {LOCATION}")
+    st.markdown(f"- **LinkedIn:** [{LINKEDIN}]({LINKEDIN})")
+    st.markdown(f"- **GitHub:** [{GITHUB}]({GITHUB})")
+    st.markdown("</div></div>", unsafe_allow_html=True)
