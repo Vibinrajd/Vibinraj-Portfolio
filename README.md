@@ -1,7 +1,4 @@
-# Vibinraj D  
-Senior Business Analyst | Data Analytics | Automation | BI Engineering
-
-# Vibinraj D  
+# Vibinraj D   
 Senior Business Analyst  
 Chennai, India  
 
