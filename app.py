@@ -419,20 +419,27 @@ projects_data = [
     },
 ]
 
-# Skills dictionary
-skills_data = {
-    "Tools": ["Power BI", "Excel", "BigQuery", "Google AppScript"],
-    "Programming": ["SQL", "Python"],
-    "Analytics": [
-        "Marketing Analytics",
-        "Financial Analytics",
-        "Churn Models",
-        "Time Series",
-        "Exploratory Data Analysis",
-    ],
-    "Automation": ["API Integration", "ETL Automation"],
-    "Operations": ["Jira", "Reporting Frameworks", "Cross-Functional Collaboration"],
-}
+
+
+# -------------------------------
+# SKILLS SECTION (FIXED – single card, no nested wrappers)
+# -------------------------------
+
+render_section_header("Skills")
+
+skills_html = ""
+
+for category, items in skills_data.items():
+    skills_html += f"""
+        <p><strong>{category}:</strong> {", ".join(items)}</p>
+    """
+
+st.markdown(f"""
+<div class='card'>
+    {skills_html}
+</div>
+""", unsafe_allow_html=True)
+
 
 # Education entries
 education_data = [
