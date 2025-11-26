@@ -141,6 +141,3 @@ Score: 89.4%
 - Delivered Power BI and marketing analytics workshops.
 
 ---
-
-## Repository Structure
-
