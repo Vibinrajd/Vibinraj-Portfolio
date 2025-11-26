@@ -1,155 +1,139 @@
-# 🌟 Vibinraj D  
-### Senior Business Analyst | Data Analytics | Automation | BI Development  
-Chennai, Tamil Nadu  
-📧 **Email:** vibinrajd2002@gmail.com  
-📱 **Phone:** +91 9943906596  
-🔗 **LinkedIn:** https://www.linkedin.com/in/vibinraj-d98  
-💻 **GitHub:** https://github.com/vibinrajd
+# Vibinraj D  
+Senior Business Analyst | Data Analytics | Automation | BI Engineering  
 
 ---
 
-## 👋 About Me  
-Tech-driven **Senior Business Analyst** with hands-on experience in **Data Analytics, Process Automation, ETL, CRM Optimization, and Business Intelligence**. Skilled in building fully automated reporting ecosystems, dashboards, and predictive analytics solutions using **Power BI, SQL, Python, BigQuery, AppScript, and API Integrations**.
-
-I focus on converting raw, chaotic datasets into clean, actionable insights that directly support decision-making across **Marketing, Finance, and Operations**.
+## Professional Summary
+Senior Business Analyst with experience in data analytics, automated reporting, business intelligence, and cross-functional process optimization. Skilled in designing scalable dashboards, automated ETL pipelines, workflow automation, and data-driven decision support systems. Proficient in Power BI, SQL, Python, BigQuery, and AppScript with hands-on experience across marketing analytics, financial analytics, churn modeling, and operational reporting frameworks.
 
 ---
 
-# 🚀 Tech Stack & Skills  
+## Core Skills
 
-### **Tools & Platforms**
+### Technical Skills
 - Power BI  
-- GCP BigQuery  
-- Google AppScript  
-- Excel (Advanced)  
-- Jira  
-
-### **Programming**
 - SQL  
-- Python (Pandas, NumPy, Matplotlib, Seaborn)
-
-### **Automation**
-- AppScript Automations  
-- ETL Pipelines  
+- Python (Pandas, NumPy, Matplotlib, Seaborn)  
+- GCP BigQuery  
+- AppScript Automation  
 - API Integration  
-- Workflow Automation  
+- ETL Pipelines  
+- Time Series Analysis  
+- EDA and Statistical Analysis  
 
-### **Data Analytics**
+### Domain Skills
 - Marketing Analytics  
 - Financial Analytics  
-- Churn Prediction  
-- Time Series  
+- Churn Analysis  
 - Market Basket Analysis  
-- EDA  
-- CRM Reporting  
+- CRM Optimization  
+- Reporting Automation  
+- Forecasting and Trend Analysis  
+
+### Tools and Platforms
+- Jira  
+- Excel (Advanced)  
+- Dashboard Automation  
+- Workflow Automation  
 
 ---
 
-# 🏢 Professional Experience  
+## Experience
 
-## **Senior Business Analyst – Analytics Avenue**  
+### Senior Business Analyst — Analytics Avenue  
 **Jul 2025 – Present**  
-- Built and deployed **automated BI systems** using Power BI, BigQuery, SQL, and AppScript, reducing manual report preparation by **70%**.  
-- Developed ETL pipelines integrating APIs and databases to automate marketing and finance dashboards.  
-- Designed **company-wide audit, churn, and financial reporting frameworks** for leadership decision-making.  
-- Managed data governance, Jira-based workflows, and automated reporting pipelines.
+- Designed and deployed automated BI systems using Power BI, BigQuery, SQL, and AppScript, reducing reporting time by 70 percent.  
+- Built ETL pipelines integrating marketing and finance data from APIs and databases.  
+- Developed audit, churn, and financial dashboards supporting strategic and operational decisions.  
+- Managed data governance, workflow automation, and performance tracking through Jira and integrated reporting tools.
 
----
-
-## **Business Analyst – Analytics Avenue**  
+### Business Analyst — Analytics Avenue  
 **Aug 2024 – Jul 2025**  
-- Developed **auto-refreshing marketing dashboards** integrated with Google & Meta APIs.  
-- Automated CRM workflows, improving lead tracking accuracy by **25%**.  
-- Built BigQuery pipelines and AppScript triggers for automated reporting.  
-- Mapped campaign performance insights to revenue impact through structured reporting frameworks.
+- Built self-refreshing marketing dashboards integrated with Meta and Google APIs for campaign and performance insights.  
+- Automated CRM workflows, improving lead tracking accuracy and response efficiency by 25 percent.  
+- Developed BigQuery-based data pipelines and AppScript triggers for automated reporting.  
+- Supported end-to-end reporting frameworks connecting marketing performance to revenue intelligence.
 
----
-
-## **Data Analyst Intern – Analytics Avenue**  
+### Data Analyst Intern — Analytics Avenue  
 **Sep 2023 – Aug 2024**  
-- Hands-on experience with SQL, Power BI, Excel, and Python automation.  
-- Created prototype dashboards and EDA models that increased data visibility by **20%**.  
-- Developed automation scripts and contributed to analytics projects across multiple domains.
+- Worked with SQL, Power BI, Excel, and Python to support analytics and reporting projects.  
+- Created prototype dashboards and EDA models improving visibility of business metrics by 20 percent.  
+- Developed early-stage automation scripts and supported analytics tasks across domains.
 
 ---
 
-# 📊 Major Projects  
+## Projects
 
-## **Marketing Performance Automation Dashboard**  
-**Tech:** Power BI, BigQuery, AppScript, Meta & Google APIs  
-- Automated real-time marketing dashboards.  
-- Integrated API-based data flows for ad performance.  
-- Improved optimization efficiency by **23%**.
+### Marketing Performance Automation Dashboard  
+- Built automated dashboards for tracking ad spend, ROI, and conversion metrics.  
+- Integrated Meta and Google Ads APIs for real-time data flow into Power BI.  
+- Improved campaign optimization efficiency by 23 percent through automated reporting.  
+**Tech:** Power BI, AppScript, BigQuery, API Integration  
 
----
+### Churn Prediction and Sales Automation  
+- Designed churn model using Python and BigQuery to monitor customer retention.  
+- Automated data refresh using API and ETL triggers, reducing manual reporting by 80 percent.  
+- Improved accuracy of churn identification and sales intelligence.  
+**Tech:** Python, BigQuery, Machine Learning  
 
-## **Churn Prediction & Sales Automation System**  
-**Tech:** Python, BigQuery, ML  
-- Developed churn detection model using Python + BigQuery.  
-- Automated data refresh using AppScript.  
-- Reduced manual reporting by **80%**.
-
----
-
-## **Automated Audit & Financial Reporting System**  
-**Tech:** Power BI, AppScript, BigQuery  
-- Built automated financial metrics + audit dashboards.  
-- Daily scheduled updates improved reporting accuracy.  
-- Enhanced strategic financial visibility.
-
----
-
-## **Employee Performance & Workflow Automation**  
+### Automated Audit and Financial Reporting System  
+- Built a Power BI dashboard integrating audit logs and financial KPIs.  
+- Automated daily data refresh using AppScript and BigQuery ETL.  
+- Improved financial visibility and audit compliance tracking.  
 **Tech:** Power BI, BigQuery, AppScript  
-- Automated workforce analytics dataset.  
-- Improved HR reporting accuracy by **18%**.
+
+### Workflow and Employee Performance Automation  
+- Created an automated performance analytics system using Power BI, AppScript, and integrated HR datasets.  
+- Enhanced accuracy of workforce insights by 18 percent.  
+**Tech:** Power BI, BigQuery  
 
 ---
 
-# 🏆 Achievements  
-- Developed **CryptoTracker**, a real-time cryptocurrency analytics dashboard (35% improvement in insight accessibility).  
-- Built EV Manufacturing Analytics Dashboard improving insights by **30%**.  
-- Performed Market Basket Analysis improving inventory insights by **15%**.  
-- Retail Sales EDA contributed to **10% profit optimization**.  
-- Promoted to **Senior Business Analyst within a year** for automation leadership.  
-- Conducted Power BI & Marketing Analytics workshops.
+## Achievements
+
+- Built CryptoTracker, a real-time cryptocurrency analytics dashboard, improving analysis efficiency by 35 percent.  
+- Designed EV Insights Dashboard analyzing adoption and manufacturing trends, improving insight accessibility by 30 percent.  
+- Conducted Market Basket Analysis identifying cross-selling opportunities, improving inventory decisions by 15 percent.  
+- Performed Retail Sales EDA identifying high-margin opportunities, increasing profit optimization by 10 percent.  
+- Promoted to Senior Business Analyst within one year for leadership in automation and reporting innovation.  
+- Delivered Power BI and Marketing Analytics workshops as part of Analytics Avenue’s L&D initiatives.
 
 ---
 
-# 🎓 Education  
+## Certifications
 
-### **B.E. Electrical & Electronics Engineering**  
-University College of Engineering, BIT Campus (2019–2023)  
-**CGPA:** 7.68  
-
-### **HSC – 2019**  
-Vidya Mandir Hr. Sec. School  
-**Percentage:** 77.5%  
-
-### **SSLC – 2017**  
-Sri Krishna Hr. Sec. School  
-**Percentage:** 89.4%
+- Data Processing Specialist — Aspiring Minds  
+- Data Analytics — Analytics Avenue  
+- Excel Certification — Great Learning  
+- Electric Vehicle Charging Systems — Coursera  
 
 ---
 
-# 📜 Certifications  
-- Data Processing Specialist – Aspiring Minds  
-- Data Analytics – Analytics Avenue  
-- Excel Certification – Great Learning  
-- Electric Vehicle Charging System – Coursera  
+## Education
+
+### B.E. Electrical and Electronics Engineering  
+University College of Engineering, BIT Campus  
+2019 – 2023  
+CGPA: 7.68  
+
+### HSC  
+Vidya Mandir Higher Secondary School  
+2019  
+Percentage: 77.5  
+
+### SSLC  
+Sri Krishna Higher Secondary School  
+2017  
+Percentage: 89.4  
 
 ---
 
-# 📄 Resume  
-📥 **Download Resume:** [`Vibinraj_D_Resume.pdf`](./resume/Vibinraj_D_Resume.pdf)
+## Contact
+
+**Email:** vibinrajd2002@gmail.com  
+**Phone:** +91 9943906596  
+**Location:** Chennai, Tamil Nadu  
+**LinkedIn:** https://www.linkedin.com/in/vibinraj-d98  
+**GitHub:** https://github.com/vibinrajd  
 
 ---
-
-# 📬 Contact  
-Feel free to reach out for collaborations, analytics projects, dashboards, automations, or ML-based solutions.
-
-📧 **Email:** vibinrajd2002@gmail.com  
-📱 **Phone:** +91 9943906596  
-🔗 **LinkedIn:** https://www.linkedin.com/in/vibinraj-d98  
-💻 **GitHub:** https://github.com/vibinrajd  
-📍 **Location:** Chennai, India  
