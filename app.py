@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from pathlib import Path
 
@@ -12,28 +11,124 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------
-# CUSTOM CSS (NEON GLOW + GLASS UI)
+# LIGHT MODE + NEON GLOW ADVANCED CSS
 # ----------------------------------------------------------
 custom_css = """
 <style>
-.stApp { background: radial-gradient(circle at top, #111827, #020617 70%); color: #e5e7eb; }
-main .block-container { padding-top: 2rem; max-width: 1180px; }
-section[data-testid="stSidebar"] { background: #020617; border-right: 1px solid rgba(148,163,184,0.3); }
-.glow-text { text-shadow: 0 0 12px rgba(56,189,248,0.75); }
-.section-title { font-size: 1.6rem; font-weight: 800; }
-.section-underline { width: 70px; height: 3px; border-radius: 999px; 
-    background: linear-gradient(90deg, #22d3ee, #6366f1, #a855f7);
-    box-shadow: 0 0 18px rgba(56,189,248,0.9); margin-bottom: 1rem; }
-.glass-card { border-radius: 1.2rem; padding: 1.3rem; background: rgba(15,23,42,0.5);
-    border: 1px solid rgba(148,163,184,0.25); backdrop-filter: blur(14px); }
-.tech-tag { padding: 0.15rem 0.6rem; margin: 0.15rem; border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.6); font-size: 0.75rem; }
+/* Light clean background */
+.stApp {
+    background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+    color: #1f2937;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Main container spacing */
+main .block-container {
+    padding-top: 2.5rem;
+    max-width: 1180px;
+}
+
+/* Sidebar light mode */
+section[data-testid="stSidebar"] {
+    background: #ffffff !important;
+    border-right: 1px solid rgba(0,0,0,0.07);
+}
+section[data-testid="stSidebar"] * {
+    color: #111827 !important;
+}
+
+/* Neon glowing title */
+.glow-text {
+    color: #0f172a;
+    text-shadow: 0 0 10px rgba(0, 153, 255, 0.35);
+}
+
+/* Section underline */
+.section-underline {
+    width: 70px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #00baff, #6366f1, #b43cff);
+    box-shadow: 0 0 10px rgba(0,153,255,0.5);
+    margin-bottom: 1rem;
+}
+
+/* Glassmorphism card */
+.glass-card {
+    padding: 1.2rem 1.4rem;
+    border-radius: 1.3rem;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0,0,0,0.08);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: all 0.25s ease-out;
+}
+
+/* CARD hover glow */
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,153,255,0.3);
+    box-shadow: 0 8px 24px rgba(0,153,255,0.25), 
+                0 0 16px rgba(99,102,241,0.25);
+}
+
+/* Tags */
+.tech-tag {
+    display: inline-block;
+    padding: 0.22rem 0.65rem;
+    margin: 0.15rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.2);
+    transition: all 0.2s ease-out;
+}
+
+/* Tag hover neon */
+.tech-tag:hover {
+    border-color: #00baff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(0,183,255,0.45);
+}
+
+/* Buttons */
+.stButton > button {
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    color: #111827;
+    font-weight: 600;
+    transition: all 0.25s ease-out;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* Button hover glow */
+.stButton > button:hover {
+    border-color: #009dff;
+    color: #007fff;
+    box-shadow: 0 0 15px rgba(0,153,255,0.45),
+                0 6px 20px rgba(0,153,255,0.15);
+    transform: translateY(-3px);
+}
+
+/* Clean link hover glow */
+a {
+    color: #0066cc;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.22s ease-out;
+}
+a:hover {
+    color: #009dff;
+    text-shadow: 0 0 12px rgba(0,153,255,0.4);
+}
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
 # ----------------------------------------------------------
-# PERSONAL DETAILS (FROM RESUME)
+# PERSONAL INFORMATION (FROM RESUME)
 # ----------------------------------------------------------
 NAME = "V I B I N R A J  D"
 ROLE_TITLE = "Senior Business Analyst"
@@ -44,16 +139,16 @@ LINKEDIN = "https://www.linkedin.com/in/vibinraj-d98"
 GITHUB = "https://github.com/vibinrajd"
 
 SUMMARY = (
-    "Tech-driven Senior Business Analyst with experience in Data Analytics, Process Automation, "
-    "and Business Intelligence. Skilled in developing automated data pipelines, "
-    "interactive dashboards, and scalable reporting systems using Power BI, SQL, Python, "
-    "GCP BigQuery, and AppScript."
+    "Tech-driven Senior Business Analyst with expertise in Data Analytics, Automation, "
+    "and Business Intelligence. Skilled in ETL pipelines, API automation, reporting engines, "
+    "Power BI systems, SQL workflows, Python automations, and GCP BigQuery data engineering."
 )
 
+# Resume PDF from upload
 RESUME_PATH = Path("/mnt/data/Vibinraj D Resume.pdf")
 
 # ----------------------------------------------------------
-# EXPERIENCE (DIRECT FROM RESUME)
+# RESUME → EXPERIENCE
 # ----------------------------------------------------------
 experience = [
     {
@@ -61,10 +156,10 @@ experience = [
         "role": "Senior Business Analyst",
         "period": "Jul 2025 – Present",
         "points": [
-            "Designed and deployed automated BI systems using Power BI, GCP BigQuery, SQL, and AppScript, reducing reporting time by 70%.",
-            "Built ETL pipelines to automate marketing and finance datasets with API integrations.",
-            "Developed company-wide audit, churn, and financial dashboards for strategic planning.",
-            "Managed data governance and workflow intelligence using Jira + automation tools."
+            "Designed & deployed automated BI systems using Power BI, BigQuery, SQL & AppScript (70% faster reporting).",
+            "Developed ETL pipelines for automated marketing and finance ingestion.",
+            "Built audit, churn, and financial analytics dashboards for strategic decisions.",
+            "Owned data governance & workflow operations using Jira + automation tools."
         ]
     },
     {
@@ -72,10 +167,10 @@ experience = [
         "role": "Business Analyst",
         "period": "Aug 2024 – Jul 2025",
         "points": [
-            "Built self-refreshing marketing dashboards integrated with APIs for ad performance.",
-            "Automated CRM workflows improving lead tracking accuracy by 25%.",
-            "Developed automated reporting pipelines using BigQuery + AppScript.",
-            "Connected campaign analytics with revenue intelligence frameworks."
+            "Developed self-refreshing dashboards using APIs for ad and client analytics.",
+            "Automated CRM workflows improving lead accuracy by 25%.",
+            "Built automated reporting pipelines via BigQuery + AppScript.",
+            "Connected campaign insights to revenue intelligence frameworks."
         ]
     },
     {
@@ -83,119 +178,117 @@ experience = [
         "role": "Data Analyst Intern",
         "period": "Sep 2023 – Aug 2024",
         "points": [
-            "Worked with SQL, Power BI, Excel, and Python automation.",
-            "Created prototype dashboards and EDA models improving decision visibility by 20%.",
-            "Developed automation scripts and early-stage analytics workflows."
+            "Hands-on experience with SQL, Power BI, Python & automation.",
+            "Built dashboards and EDA models improving visibility by 20%.",
+            "Created automation scripts & prototype BI solutions."
         ]
     }
 ]
 
 # ----------------------------------------------------------
-# PROJECTS (FROM RESUME)
+# PROJECTS FROM RESUME
 # ----------------------------------------------------------
 projects = [
     {
         "title": "Marketing Performance Automation Dashboard",
-        "summary": "Automated ad-side and client-side performance dashboards using Meta & Google APIs.",
+        "summary": "Dual dashboards (Ad & Client side) automated using Meta + Google APIs.",
         "highlights": [
-            "Real-time automated Power BI dashboards.",
-            "Faster campaign optimization by 23%."
+            "Real-time API automated ingestion.",
+            "23% faster campaign optimization."
         ],
         "tech": ["Power BI", "AppScript", "BigQuery", "API Integration"]
     },
     {
-        "title": "Churn Prediction & Sales Automation",
-        "summary": "BigQuery + Python based churn prediction with automated refresh.",
+        "title": "Churn Prediction & Sales Automation System",
+        "summary": "Churn prediction using Python + BigQuery with automated tracking.",
         "highlights": [
-            "Reduced manual reporting by 80%.",
-            "Enhanced retention tracking for sales."
+            "80% reduction in manual retention reporting.",
+            "Improved churn tracking accuracy."
         ],
         "tech": ["Python", "BigQuery", "Machine Learning"]
     },
     {
         "title": "Automated Audit & Financial Reporting System",
-        "summary": "Real-time financial + audit dashboard with BigQuery ETL automation.",
+        "summary": "End-to-end Power BI reporting with ETL refresh automation.",
         "highlights": [
-            "Daily automated reporting.",
-            "Improved financial visibility for leadership."
+            "Real-time audit visibility.",
+            "Improved financial insights for leadership."
         ],
-        "tech": ["Power BI", "AppScript", "BigQuery"]
+        "tech": ["Power BI", "BigQuery", "AppScript"]
     },
     {
         "title": "Employee Performance Automation",
-        "summary": "HR analytics system using Power BI + AppScript automations.",
+        "summary": "Automated HR performance analytics.",
         "highlights": [
-            "Improved HR reporting accuracy by 18%."
+            "18% improvement in reporting accuracy."
         ],
         "tech": ["Power BI", "BigQuery", "AppScript"]
     }
 ]
 
 # ----------------------------------------------------------
-# SKILLS (FROM RESUME)
+# SKILLS
 # ----------------------------------------------------------
 skills_primary = [
     "Power BI", "SQL", "Python (Pandas, NumPy, Matplotlib, Seaborn)",
-    "GCP BigQuery", "AppScript Automation", "API Integration",
-    "Time Series", "Marketing Analytics", "Financial Analytics",
-    "Churn Analysis", "Market Basket Analysis", "EDA"
+    "BigQuery", "AppScript Automation", "API Integration",
+    "Time Series Analysis", "EDA", "Marketing Analytics",
+    "Financial Analytics", "Churn Prediction", "Market Basket Analysis"
 ]
 
 skills_secondary = [
-    "CRM Optimization", "Workflow Automation", "Jira",
-    "Reporting Systems", "Cross-Functional Collaboration"
+    "CRM Automation", "Workflow Automation", "Jira",
+    "Reporting Management", "Cross-Functional Collaboration"
 ]
 
 # ----------------------------------------------------------
-# EDUCATION (FROM RESUME)
+# EDUCATION
 # ----------------------------------------------------------
 education = [
-    ("B.E. Electrical & Electronics Engineering", "University College of Engineering, BIT Campus", "2019–2023", "CGPA 7.68"),
-    ("HSC", "Vidya Mandir Hr. Sec. School", "2019", "77.5%"),
-    ("SSLC", "Sri Krishna Hr. Sec. School", "2017", "89.4%")
+    ("B.E. Electrical & Electronics Engineering", "UCE - BIT Campus", "2019–2023", "CGPA: 7.68"),
+    ("HSC", "Vidya Mandir Hr Sec School", "2019", "77.5%"),
+    ("SSLC", "Sri Krishna Hr Sec School", "2017", "89.4%")
 ]
 
 # ----------------------------------------------------------
-# CERTIFICATIONS (FROM RESUME)
+# CERTIFICATIONS
 # ----------------------------------------------------------
 certifications = [
-    "Data Processing Specialist - Aspiring Minds",
-    "Data Analytics - Analytics Avenue",
-    "Excel Certification - Great Learning",
-    "Electric Vehicle Charging System - Coursera"
+    "Data Processing Specialist – Aspiring Minds",
+    "Data Analytics – Analytics Avenue",
+    "Excel Certification – Great Learning",
+    "EV Charging System – Coursera"
 ]
 
 # ----------------------------------------------------------
-# ACHIEVEMENTS (FROM RESUME)
+# ACHIEVEMENTS
 # ----------------------------------------------------------
 achievements = [
-    "CryptoTracker: Real-time cryptocurrency analytics dashboard (35% better insights).",
-    "EV Analytics Dashboard supporting policy and manufacturing insights (30% improvement).",
-    "Market Basket Analysis improving inventory insights by 15%.",
-    "Retail Sales EDA boosting profit optimization by 10%.",
-    "Promoted to Senior Business Analyst within a year for automation leadership.",
+    "CryptoTracker: Real-time crypto dashboard (35% improved analysis).",
+    "EV Analytics Dashboard for adoption + manufacturing insights (30% boost).",
+    "Market Basket Analysis improving inventory visibility by 15%.",
+    "Retail Sales EDA improving profit optimization by 10%.",
+    "Promoted to Senior Analyst within 1 year.",
     "Conducted Power BI & Marketing Analytics workshops."
 ]
 
 # ----------------------------------------------------------
-# SIDEBAR NAVIGATION
+# SIDEBAR
 # ----------------------------------------------------------
 with st.sidebar:
     st.title("💼 Portfolio")
     page = st.radio("Navigate", ["Home", "Experience", "Projects", "Skills", "Education", "Certifications", "Achievements", "Resume", "Contact"])
 
 # ----------------------------------------------------------
-# SECTION HEADER HELPER
+# HELPER
 # ----------------------------------------------------------
 def section_header(txt):
-    st.markdown(f"<div class='section-title glow-text'>{txt}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='glow-text' style='font-size:1.7rem;font-weight:900'>{txt}</div>", unsafe_allow_html=True)
     st.markdown("<div class='section-underline'></div>", unsafe_allow_html=True)
 
 # ----------------------------------------------------------
-# PAGE CONTENT
+# PAGES
 # ----------------------------------------------------------
-
-# HOME PAGE
 if page == "Home":
     section_header("Welcome")
     st.markdown(f"## {NAME}")
@@ -205,76 +298,68 @@ if page == "Home":
     st.metric("Experience", "3+ Years")
     st.metric("Expertise", "Analytics + Automation")
 
-# EXPERIENCE PAGE
 elif page == "Experience":
     section_header("Work Experience")
     for exp in experience:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown(f"### {exp['role']} | {exp['company']} ({exp['period']})")
+        st.markdown(f"### {exp['role']} • {exp['company']}")
+        st.markdown(f"**{exp['period']}**")
         for p in exp["points"]:
             st.markdown(f"- {p}")
         st.markdown("</div><br>", unsafe_allow_html=True)
 
-# PROJECTS PAGE
 elif page == "Projects":
     section_header("Projects")
     for proj in projects:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
         st.markdown(f"### {proj['title']}")
         st.markdown(proj["summary"])
-        if proj["highlights"]:
-            st.markdown("**Highlights:**")
-            for h in proj["highlights"]:
-                st.markdown(f"- {h}")
+        st.markdown("**Highlights:**")
+        for h in proj["highlights"]:
+            st.markdown(f"- {h}")
+        st.markdown("<br>", unsafe_allow_html=True)
         tech_html = "".join([f"<span class='tech-tag'>{t}</span>" for t in proj["tech"]])
         st.markdown(tech_html, unsafe_allow_html=True)
         st.markdown("</div><br>", unsafe_allow_html=True)
 
-# SKILLS PAGE
 elif page == "Skills":
     section_header("Skills")
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
     st.write("### Technical Skills")
-    for s in skills_primary:
-        st.markdown(f"- {s}")
+    for s in skills_primary: st.markdown(f"- {s}")
     st.markdown("</div><br>", unsafe_allow_html=True)
 
     st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-    st.write("### Supporting Skills")
-    for s in skills_secondary:
-        st.markdown(f"- {s}")
+    st.write("### Soft & Supporting Skills")
+    for s in skills_secondary: st.markdown(f"- {s}")
     st.markdown("</div>", unsafe_allow_html=True)
 
-# EDUCATION PAGE
 elif page == "Education":
     section_header("Education")
     for degree, inst, yr, score in education:
+        st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
         st.markdown(f"### {degree}")
         st.markdown(f"{inst} ({yr})")
-        st.markdown(f"**Score:** {score}")
-        st.markdown("---")
+        st.markdown(f"**{score}**")
+        st.markdown("</div><br>", unsafe_allow_html=True)
 
-# CERTIFICATIONS PAGE
 elif page == "Certifications":
     section_header("Certifications")
     for c in certifications:
         st.markdown(f"- {c}")
 
-# ACHIEVEMENTS PAGE
 elif page == "Achievements":
     section_header("Achievements")
     for a in achievements:
         st.markdown(f"- {a}")
 
-# RESUME PAGE
 elif page == "Resume":
     section_header("Resume")
     if RESUME_PATH.exists():
         with open(RESUME_PATH, "rb") as f:
             st.download_button("📄 Download Resume", f, "Vibinraj_Resume.pdf", "application/pdf")
-    st.info("Your resume is embedded from the uploaded file.")
+    st.info("Your resume has been embedded from the uploaded file.")
 
-# CONTACT PAGE
 elif page == "Contact":
     section_header("Contact")
     st.write(f"📧 Email: {EMAIL}")
